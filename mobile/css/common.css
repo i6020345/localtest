@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+/* RESET */
+
+/* reset css */
+html,body{margin:0;padding:0;}
+body{font:14px/1.5 font-family:'Malgun Gothic','Droid Sans','Apple-Gothic','애플고딕','Tahoma',dotum,'돋움',gulim,'굴림',sans-serif;font-size:14px;line-height:1.5;-webkit-text-size-adjust:none; background-color:#fff;-webkit-text-size-adjust:none;word-break:keep-all;}
+dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,select,textarea,p,blockquote,tbody,tfoot,thead,th,td{margin:0;padding:0;}
+input,textarea,select,button{font:14px/1.5 'Malgun Gothic','Droid Sans','Apple-Gothic','애플고딕','Tahoma',dotum,'돋움',gulim,'굴림',sans-serif;color:#666;vertical-align:middle;word-break:normal;}
+h1,h2,h3,h4,h5,h6{font-weight:normal;font-size:100%;}
+table{table-layout:fixed;width:100%;border-spacing:0;border-collapse:collapse;}
+ol,ul,li{list-style:none;}
+hr, legend, caption, .skip {position:absolute;overflow:hidden;line-height:0.01%;font-size:0.01%;width:0;height:0;}
+img,fieldset{border:0 none;vertical-align:middle;max-width:100%;}
+label,button{cursor:pointer;}
+em,address{font-style:normal;}
+a{color:inherit;text-decoration:none;}
+caption{visibility:hidden; height:0px; overflow:hidden; font-size:0;}
+
+/* lading */
+.landing_area {position:relative; margin:0 auto;}
+.landing_area img{vertical-align:top;border:0;width: 100%;}
+.landing_area .blind {  position: absolute !important;height: 1px; width: 1px; overflow: hidden;clip: rect(1px 1px 1px 1px); /* IE6, IE7 */clip: rect(1px, 1px, 1px, 1px);}
+.landing_area .btn_link a{display:block;padding:0 0 25px;color:#494949;font-size:13px;text-decoration:underline;text-align:center;}

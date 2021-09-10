@@ -13,7 +13,6 @@
 .txt h3.bicTxt:after { background-color:#292929; } */
 </style>
 
-
 </head>
 <body>
 <div id="wrap" class="main campaign">

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root namespace="kr.co.kdec.core.product.dao.ProductDAO">
+	<query id="selecttblAdminInfoList" parameterType="tbladmininfoVO" resultType="int">
+		
+SELECT 
+	idx, adminId, adminName, adminPassword, adminLastLoginDate, adminLevel, adminLoginCount, adminMenuPermission, adminIPPermission, regDate, regIP
+FROM
+	tblAdminInfo
+WHERE 
+	 1 = 1 /*ADDWHERE*/ 
+ORDER BY 
+	idx DESC 
+	</query>
+	<query id="inserttblAdminInfo" parameterType="tbladmininfoVO">
+		
+INSERT INTO tblAdminInfo
+	(adminId, adminName, adminPassword, adminLevel, adminLoginCount, adminMenuPermission, adminIPPermission, regDate, regIP)
+VALUES
+	(#adminId#, #adminName#, #adminPassword#, #adminLevel#, #adminLoginCount#, #adminMenuPermission#, #adminIPPermission#, #regDate#, #regIP#)
+	</query>
+	<query id="updatetblAdminInfoForMe" parameterType="tbladmininfoVO">
+		
+UPDATE tblAdminInfo SET 
+	, adminName = #ADMINNAME#
+	, adminPassword = #ADMINPASSWORD#
+WHERE idx = #IDX#;
+	</query>
+	<query id="updatetblAdminInfo" parameterType="tbladmininfoVO">
+		
+UPDATE tblAdminInfo SET 
+	adminId = #ADMINID#
+	, adminName = #ADMINNAME#
+	, adminLevel = #ADMINLEVEL#
+	, adminMenuPermission = #ADMINMENUPERMISSION#
+	, adminIPPermission = #ADMINIPPERMISSION#
+WHERE idx = #IDX#;
+	</query>
+
+	<query id="updatetblAdminInfoPassword" parameterType="tbladmininfoVO">
+		
+UPDATE tblAdminInfo SET 
+	adminPassword = #ADMINPASSWORD#
+WHERE idx = #IDX#;
+	</query>
+
+<query id="updatetblAdminInfoLogin" parameterType="tbladmininfoVO">
+		
+UPDATE tblAdminInfo SET 
+	adminLastLoginDate = GETDATE()
+	, adminLoginCount = adminLoginCount + 1
+WHERE adminId = #ADMINID#;
+	</query>
+
+	<query id="deletetblAdminInfo" parameterType="tbladmininfoVO">
+		
+DELETE FROM tblAdminInfo WHERE idx = #IDX#;
+	</query>
+</root>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root namespace="kr.co.kdec.core.product.dao.ProductDAO">
+	<query id="selecttblMenuList" parameterType="tblmenuVO" resultType="int">
+		
+SELECT  menuIdx, menuParentIdx, menuIcon, menuIconColor, menuName, menuURL, menuGroupNo, menuLevel, menuSortNo, isMenu, isBlank, isUse
+FROM     tblMenu
+WHERE 
+	 1 = 1 /*ADDWHERE*/ 
+ORDER BY menuGroupNo, menuLevel, menuSortNo
+	</query>
+	<query id="inserttblMenu" parameterType="tblmenuVO">
+		
+INSERT INTO tblMenu
+	(menuParentIdx, menuIcon, menuIconColor, menuName, menuURL, menuGroupNo, menuLevel, menuSortNo, isMenu, isBlank, isUse)
+VALUES
+	(#menuParentIdx#, #menuIcon#, #menuIconColor#, #menuName#, #menuURL#, #menuGroupNo#, #menuLevel#, #menuSortNo#, #isMenu#, #isBlank#, #isUse#)
+	</query>
+	<query id="updatetblMenu" parameterType="tblmenuVO">
+		
+UPDATE tblMenu SET 
+	menuIcon = #MENUICON#
+	, menuName = #MENUNAME#
+	, menuURL = #MENUURL#
+	, isBlank = #ISBLANK#
+	, isUse = #ISUSE#
+WHERE menuIdx = #MENUIDX#;
+	</query>
+	<query id="deletetblMenu" parameterType="tblmenuVO">
+		
+DELETE FROM tblMenu WHERE menuIdx = #MENUIDX#;
+	</query>
+</root>

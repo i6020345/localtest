@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root namespace="kr.co.kdec.core.product.dao.ProductDAO">
+	<query id="selecttblCodeList" parameterType="tblcodeVO" resultType="int">
+		
+SELECT 
+	codeIdx, parentCodeValue, codeDepth, codeValue, codeName, codeSort, codeUseYn, codeText, codeNameEn, codeNameCh, codeNameJp
+FROM
+	tblCode
+WHERE 
+	 1 = 1 /*ADDWHERE*/ 
+ORDER BY 
+	codeidx DESC 
+	</query>
+	<query id="inserttblCode" parameterType="tblcodeVO">
+		
+INSERT INTO tblCode
+	(parentCodeValue, codeDepth, codeValue, codeName, codeSort, codeUseYn, codeText, codeNameEn, codeNameCh, codeNameJp)
+VALUES
+	(#parentCodeValue#, #codeDepth#, #codeValue#, #codeName#, #codeSort#, #codeUseYn#, #codeText#, #codeNameEn#, #codeNameCh#, #codeNameJp#)
+	</query>
+	<query id="updatetblCode" parameterType="tblcodeVO">
+		
+UPDATE tblCode SET 
+	codeName = #CODENAME#
+	, codeUseYn = #CODEUSEYN#
+	, codeText = #CODETEXT#
+	, codeNameEn = #codeNAMEEN#
+	, codeNameCh = #codeNAMECH#
+	, codeNameJp = #codeNAMEJP#
+WHERE codeIdx = #CODEIDX#;
+	</query>
+	<query id="deletetblCode" parameterType="tblcodeVO">
+		
+DELETE FROM tblCode WHERE codeIdx = #CODEIDX#;
+	</query>
+</root>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root namespace="kr.co.kdec.core.product.dao.ProductDAO">
+	<query id="selecttblNoticeList" parameterType="tblnoticeVO" resultType="int">
+		
+SELECT 
+	idx, flag, topYN, noticeTitle, noticeContent, noticeFilePath, noticeHead, readCount, useYN, regAdminId, regName, regDate, regIP
+	, DATEDIFF(day, regDate, GETDATE()) AS dateDiffCnt
+FROM
+	tblNotice
+WHERE 
+	 1 = 1 /*ADDWHERE*/ 
+ORDER BY 
+	idx DESC 
+	</query>
+	<query id="inserttblNotice" parameterType="tblnoticeVO">
+		
+INSERT INTO tblNotice
+	(flag, topYN, noticeTitle, noticeContent, noticeFilePath, noticeHead, readCount, useYN, regAdminId, regName, regDate, regIP)
+VALUES
+	(#flag#, #topYN#, #noticeTitle#, #noticeContent#, #noticeFilePath#, #noticeHead#, #readCount#, #useYN#, #regAdminId#, #regName#, #regDate#, #regIP#)
+	</query>
+	<query id="updatetblNotice" parameterType="tblnoticeVO">
+		
+UPDATE tblNotice SET 
+	topYN = #TOPYN#
+	, noticeTitle = #NOTICETITLE#
+	, noticeContent = #NOTICECONTENT#
+	, noticeFilePath = #NOTICEFILEPATH#
+	, noticeHead = #NOTICEHEAD#
+	, useYN = #USEYN#
+WHERE idx = #IDX#;
+	</query>
+	<query id="deletetblNotice" parameterType="tblnoticeVO">
+		
+DELETE FROM tblNotice WHERE idx = #IDX#;
+	</query>
+</root>

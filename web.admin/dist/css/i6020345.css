@@ -1,0 +1,14 @@
+/*이정규 추가*/
+/* SNS아이콘에 네이버 추가 */
+.icon-naver {
+    background-image: url("/images/naver34x34.PNG");
+    background-position: center center;
+}
+
+/* Jquery valdidation 에러코드 css */
+div.error {
+	color: Red;
+    font-style: italic;
+    padding: 1px;
+    margin: 0px 0px 0px 5px;
+}

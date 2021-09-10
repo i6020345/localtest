@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>순수한면</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<style type="text/css">
+			* {margin:0; padding:0;}
+			body {background-color:#fff; font-family:"맑은 고딕", san-serif; padding:20px;}
+			caption {display:none; font-size:0; line-height:0; height:0; width:0;}
+			h1 {font-size:24px; margin-bottom:10px;}
+			h2 {font-size:20px; margin:30px 0 10px;}
+			.note {overflow:hidden; background-color:#eee; border:2px dashed #666; margin-bottom:20px; padding:10px;}
+			.note ul {overflow:hidden; padding-left:15px;}
+			.note ul li {list-style:bullet; font-size:12px; line-height:1.5em;}
+
+			.status {overflow:hidden; margin-bottom:10px;}
+			.status {overflow:hidden;}
+			.status li {float:left; list-style:none; margin-left:5px;}
+			.status li:first-child {margin-left:0;}
+			.status li a {display:block; font-size:11px; text-decoration:none; padding-right:5px; padding-left:5px; height:18px;}
+			.status li a:hover {background-color:#dfb8b6; color:#fff;}
+
+			section {overflow:hidden;}
+			table {width:100%; border-collapse:collapse; table-layout:fixed;}
+			th, td {word-break:break-all;}
+			tbody .end td {background-color:#ddd;}
+			tbody .new td,tbody .new td:hover {background-color:#f7edd7 !important;}
+			tbody .modify td {background-color:#e8e9f6;}
+			thead th {background-color:#dcdcdc; color:#333; border:1px solid #666; font-size:12px; padding-top:5px; padding-bottom:5px;}
+			tbody td {border:1px solid #666; font-size:12px; padding:3px 6px;}
+			tbody td.start {color:#ff6028; font-weight:bold;}
+			tbody td.name {color:#555;}
+			tbody td.end {color:#0f8ce4; font-weight:bold;}
+			tbody td.status {color:#0f8ce4; font-weight:bold;}
+			tbody td.block{border:0; padding:50px 0 10px; font-size:20px; font-weight:bold;}
+			tbody .msg{font-size:11px; border-top:1px solid #666; padding:10px 5px; color:#333; font-weight:bold;}
+			tbody .msg del{color:#666; font-weight:normal;}
+			tbody .msg:first-child{border-top:0}
+			tbody .center {text-align:center; padding-left:0;}
+			tbody .depth01 {font-weight:bold; text-align:center; padding-left:0;}
+			tbody .due{color:#a0a0a0; text-align:left; padding-left:10px}
+			tbody .due p{border-top:2px solid #a0a0a0; padding:5px;}
+			tbody .due p:first-child{border-top:0}
+			tbody a {text-decoration:none;}
+			tbody a:hover {text-decoration:underline;}
+			td.link{cursor:pointer;}
+			table tbody .changed td{background-color: #ff0;}
+			th:nth-child(1), td:nth-child(1) {width:10%;}
+			th:nth-child(2), td:nth-child(2) {width:13%;}
+			th:nth-child(3), td:nth-child(3) {width:9%;}
+			th:nth-child(4), td:nth-child(4) {width:9%;}
+			th:nth-child(5), td:nth-child(5) {width:9%;}
+			th:nth-child(6), td:nth-child(6) {width:9%;}
+			th:nth-child(7), td:nth-child(7) {width:16%;}
+			th:nth-child(8), td:nth-child(8) {width:5%;}
+			th:nth-child(8), td:nth-child(9) {}
+			/* MOBILE */
+			@media screen and (max-width:768px){
+				body {padding:10px;}
+				h1 {font-size:16px;}
+				.note {display:none; overflow:hidden; line-height:0; height:0; width:0;}
+				table tbody tr td {font-size:13px;}
+				th:nth-child(6), th:nth-child(8), th:nth-child(9), th:nth-child(10), th:nth-child(11), th:nth-child(12), td.center {display:none; overflow:hidden; line-height:0; height:0; width:0;}
+
+				th:nth-child(1), td:nth-child(1) {width:16%;}
+				th:nth-child(2), td:nth-child(2) {width:16%;}
+				th:nth-child(3), td:nth-child(3) {width:16%;}
+				th:nth-child(4), td:nth-child(4) {width:16%;}
+				th:nth-child(5), td:nth-child(5) {width:16%;}
+			}
+			
+			/* MENU:HOVER_COLOR */
+			/* table tbody tr.menu01:hover td {background-color:#A7EEFF;}
+			table tbody tr.menu02:hover td {background-color:#9DF0E1;}
+			table tbody tr.menu03:hover td {background-color:#D2FFD2;}
+			table tbody tr.menu04:hover td {background-color:#FFD4DF;}
+			table tbody tr.menu05:hover td {background-color:#FFDCFF;}
+			table tbody tr.menu06:hover td {background-color:#FAFA96;}
+			table tbody tr.menu07:hover td {background-color:#FFC846;}
+			table tbody tr.menu08:hover td {background-color:#FFE4B5;}
+			table tbody tr.menu09:hover td {background-color:#A5E3E6;}
+			table tbody tr.menu10:hover td {background-color:#d4e4f5;}
+			table tbody tr.menu11:hover td {background-color:#41ffb7;}
+			table tbody tr.menu12:hover td {background-color:#f288af;}
+			table tbody tr.menu13:hover td {background-color:#7fb2f0;}
+			table tbody tr.menu14:hover td {background-color:#eddfaf;} */
+
+			/*layer 팝업 완료시 color 변경색 추가*/
+			tbody .layer td {background-color:lightblue;}
+	</style>
+
+	<script>
+		$(document).ready(function(){
+			$('.link').on('click', function(){
+				var tg = $(this).text() + '.html';
+				if(tg == ''){
+				}else{
+					window.open(tg);
+					//window.open('http://ahc.pub.wyliedev.co.kr/html_renewal/web/assets/html/'+tg+'','_blank')
+				}
+			})
+		})
+	</script>
+
+</head>
+<body>
+
+	<h1>순수한면</h1>
+	<div class="note">
+		<ul>
+			<li><strong>파일리스트의 메뉴는 항상 최신 버전으로 유지 합니다.</strong></li>
+			<li>해당 파일리스트는 직군별 협업을 위해 작성 되었습니다.</li>
+			<li><strong>프로젝트 관련 퍼블리셔 외 파일리스트 수정을 금지합니다.</strong></li>
+		</ul>
+	</div>
+	<h2> </h2>
+	<section>
+		<table>
+			<caption>파일리스트</caption>
+			<thead>
+				<tr>
+					<th scope="col">1DEPTH</th>
+					<th scope="col">2DEPTH</th>
+					<th scope="col">TYPE</th>
+					<th scope="col">LINK</th>
+					<th scope="col">NOTICE</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class=" ">
+					<td class="depth01">메인</td>
+					<td></td>
+					<td class="center"></td>
+					<td class="link">main</td>
+					<td>
+						<p class="msg">
+							메인
+						</p>
+					</td>
+				</tr>
+
+				<tr class="menu01 ">
+					<td class="depth01" rowspan="5">순수한면 제품</td>
+					<td>순수한면 제로</td>
+					<td class="center"></td>
+					<td class="link">product/purecotton_zero</td>
+					<td>
+						<p class="msg">
+							순수한면 제로
+						</p>
+					</td>
+				</tr>
+				<tr class="menu01 ">
+					<td>순수한면 수퍼가드</td>
+					<td class="center"></td>
+					<td class="link">product/purecotten_super</td>
+					<td>
+						<p class="msg">
+							순수한면 수퍼가드
+						</p>
+					</td>
+				</tr>
+				<tr class="menu01 ">
+					<td>순수한면 슬림</td>
+					<td class="center"></td>
+					<td class="link">product/purecotten_slim</td>
+					<td>
+						<p class="msg">
+							순수한면 슬림
+						</p>
+					</td>
+				</tr>
+				<tr class="menu01 ">
+					<td>The건강한 순수한면</td>
+					<td class="center"></td>
+					<td class="link">product/purecotten_health</td>
+					<td>
+						<p class="msg">
+							The건강한 순수한면
+						</p>
+					</td>
+				</tr>
+				<tr class="menu01 ">
+					<td>제품 전체보기</td>
+					<td class="center"></td>
+					<td class="link">product/purecotten_all</td>
+					<td>
+						<p class="msg">
+							제품 전체보기
+						</p>
+					</td>
+				</tr>
+
+				<tr class="menu01 ">
+					<td class="depth01">순수한면 이야기</td>
+					<td></td>
+					<td class="center"></td>
+					<td class="link">brand/story</td>
+					<td>
+						<p class="msg">
+							순수한면 이야기
+						</p>
+					</td>
+				</tr>
+
+				<tr class="menu01 ">
+					<td class="depth01" rowspan="2">순수한면 약속코드</td>
+					<td>약속코드란?</td>
+					<td class="center"></td>
+					<td class="link">promise/purecotten</td>
+					<td>
+						<p class="msg">
+							순수한면 이야기
+						</p>
+					</td>
+				</tr>
+				<tr class="menu01 ">
+					<td>순수한면 안심 정보</td>
+					<td class="center"></td>
+					<td class="link">promise/safety</td>
+					<td>
+						<p class="msg">
+							순수한면 안심 정보
+						</p>
+					</td>
+				</tr>
+
+				<tr class="menu01 ">
+					<td class="depth01" rowspan="2">이벤트</td>
+					<td>이벤트 목록</td>
+					<td class="center"></td>
+					<td class="link">event/event_list</td>
+					<td>
+						<p class="msg">
+							이벤트 목록
+						</p>
+					</td>
+				</tr>
+				<tr class="menu01 ">
+					<td>이벤트 상세</td>
+					<td class="center"></td>
+					<td class="link">event/event_view</td>
+					<td>
+						<p class="msg">
+							이벤트 상세
+						</p>
+					</td>
+				</tr>
+
+				<tr class="menu01 ">
+					<td class="depth01" rowspan="6">고객센터</td>
+					<td>공지사항 목록</td>
+					<td class="center"></td>
+					<td class="link">customer/noti_list</td>
+					<td>
+						<p class="msg">
+							공지사항 목록
+						</p>
+					</td>
+				</tr>
+				<tr class="menu01 ">
+					<td>공지사항 상세</td>
+					<td class="center"></td>
+					<td class="link">customer/noti_view</td>
+					<td>
+						<p class="msg">
+							공지사항 상세
+						</p>
+					</td>
+				</tr>
+				<tr class="menu01 ">
+					<td>1:1문의 index</td>
+					<td class="center"></td>
+					<td class="link">customer/onetoone</td>
+					<td>
+						<p class="msg">
+							1:1문의 index
+						</p>
+					</td>
+				</tr>
+				<tr class="menu01 ">
+					<td>1:1문의 등록</td>
+					<td class="center"></td>
+					<td class="link">customer/onetoone_write</td>
+					<td>
+						<p class="msg">
+							1:1문의 등록
+						</p>
+					</td>
+				</tr>
+				<tr class="menu01 ">
+					<td>1:1문의 목록</td>
+					<td class="center"></td>
+					<td class="link">customer/onetoone_list</td>
+					<td>
+						<p class="msg">
+							1:1문의 목록
+						</p>
+					</td>
+				</tr>
+				<tr class="menu01 ">
+					<td>1:1문의 보기</td>
+					<td class="center"></td>
+					<td class="link">customer/onetoone_view</td>
+					<td>
+						<p class="msg">
+							1:1문의 보기
+						</p>
+					</td>
+				</tr>
+
+				<tr class="menu01 ">
+					<td class="depth01">로그인</td>
+					<td>로그인</td>
+					<td class="center"></td>
+					<td class="link">etc/login</td>
+					<td>
+						<p class="msg">
+							 로그인
+						</p>
+					</td>
+				</tr>
+				<tr class="menu01 ">
+					<td class="depth01">에러</td>
+					<td>에러</td>
+					<td class="center"></td>
+					<td class="link">etc/error</td>
+					<td>
+						<p class="msg">
+							  
+						</p>
+					</td>
+				</tr>
+
+				<tr class="menu01 ">
+					<td class="depth01">메일</td>
+					<td>1:1문의 메일발송 템플릿(공통)</td>
+					<td class="center"></td>
+					<td class="link">email/mail_templete</td>
+					<td>
+						<p class="msg">
+							1:1문의 메일발송 템플릿(공통)
+						</p>
+					</td>
+				</tr>
+
+
+			</tbody>
+		</table>
+	</section>
+
+</body>
+</html>
