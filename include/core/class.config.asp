@@ -10,6 +10,7 @@ Dim cfg, util, fnc, rule
 
 Class WEBCONFIG
 
+	'//aqq
 	Public DomainName			'// 도메인명
 	Public USER_IP					'// 사용자 아이피
 	Public SERVER_IP					'// 서버 아이피
